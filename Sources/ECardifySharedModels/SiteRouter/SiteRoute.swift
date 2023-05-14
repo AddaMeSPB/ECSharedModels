@@ -31,6 +31,12 @@ public struct SiteRouter: ParserPrinter {
                 AuthEngineRouter()
             }
 
+            Route(.case(SiteRoute.walletPasses)) {
+                Path { "v1" }
+                Path { "wallet_pass" }
+                WalletPassRouter()
+            }
+
             Route(.case(SiteRoute.terms)) {
                 Path { "terms" }
             }
