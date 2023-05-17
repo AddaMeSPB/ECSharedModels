@@ -1,11 +1,11 @@
 import Foundation
 
 public class PassContent: Codable, Equatable {
-    public let primaryFields: [Field]
-    public let secondaryFields: [Field]?
-    public let auxiliaryFields: [Field]?
-    public let headerFields: [Field]?
-    public let backFields: [Field]?
+    public var primaryFields: [Field]
+    public var secondaryFields: [Field]?
+    public var auxiliaryFields: [Field]?
+    public var headerFields: [Field]?
+    public var backFields: [Field]?
 
     public init(
         primaryFields: [Field],
@@ -31,15 +31,15 @@ public class PassContent: Codable, Equatable {
 }
 
 public struct Field: Codable, Equatable {
-    public let key: String
-    public let label: String?
-    public let value: String
-    public let dateStyle: DateTimeStyle?
-    public let timeStyle: DateTimeStyle?
-    public let textAlignment: TextAlignment?
+    public var key: String
+    public var label: String?
+    public var value: String
+    public var dateStyle: DateTimeStyle?
+    public var timeStyle: DateTimeStyle?
+    public var textAlignment: TextAlignment?
     /// only works for Auxiliary Fields
-    public let row: Int?
-    public let attributedValue: String?
+    public var row: Int?
+    public var attributedValue: String?
 
     public init(
         key: String,

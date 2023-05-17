@@ -1,11 +1,11 @@
 import Foundation
 
 public extension Pass {
-    /// [documentation](https://developer.apple.com/documentation/walletpasses/pass/nfc)
+    /// [documentation](https://developer.apple.com/documentation/walvarpasses/pass/nfc)
     struct NFC: Codable, Equatable {
-        public let encryptionPublicKey: String
-        public let message: String
-        public let requiresAuthentication: Bool?
+        public var encryptionPublicKey: String
+        public var message: String
+        public var requiresAuthentication: Bool?
 
         public init(
             encryptionPublicKey: String,

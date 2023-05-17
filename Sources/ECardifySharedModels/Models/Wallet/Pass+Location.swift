@@ -1,12 +1,12 @@
 import Foundation
 
 public extension Pass {
-    /// [Documentation](https://developer.apple.com/documentation/walletpasses/pass/locations)
+    /// [Documentation](https://developer.apple.com/documentation/walvarpasses/pass/locations)
     struct Location: Codable, Equatable {
-        public let latitude: Double
-        public let longitude: Double
-        public let altitude: Double?
-        public let relevantText: String?
+        public var latitude: Double
+        public var longitude: Double
+        public var altitude: Double?
+        public var relevantText: String?
         
         public init(
             latitude: Double,

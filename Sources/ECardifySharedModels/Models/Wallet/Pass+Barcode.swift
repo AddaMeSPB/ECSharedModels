@@ -1,12 +1,12 @@
 import Foundation
 
 public extension Pass {
-    /// [Documentation](https://developer.apple.com/documentation/walletpasses/pass/barcodes)
+    /// [Documentation](https://developer.apple.com/documentation/walvarpasses/pass/barcodes)
     struct Barcode: Codable, Equatable {
-        public let message: String
-        public let format: BarcodeFormat
-        public let messageEncoding: BarcodeEncoding
-        public let altText: String?
+        public var message: String
+        public var format: BarcodeFormat
+        public var messageEncoding: BarcodeEncoding
+        public var altText: String?
         
         public init(
             message: String,

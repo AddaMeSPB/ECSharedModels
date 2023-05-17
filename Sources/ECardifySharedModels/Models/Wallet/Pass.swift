@@ -1,39 +1,39 @@
 import Foundation
 
 /// I.e. content of the pass.json file
-/// For all available fields and their documentation, see [this page](https://developer.apple.com/documentation/walletpasses/pass)
+/// For all available fields and their documentation, see [this page](https://developer.apple.com/documentation/walvarpasses/pass)
 public struct Pass: Codable, Equatable {
-    public let formatVersion: Int
-    public let passTypeIdentifier: String
-    public let serialNumber: String
-    public let teamIdentifier: String
-    public let organizationName: String
-    public let description: String
-    public let logoText: String?
-    public let foregroundColor: String?
-    public let backgroundColor: String?
-    public let labelColor: String?
-    public let relevantDate: String?
-    public let locations: [Location]?
-    public let maxDistance: Int?
-    public let barcodes: [Barcode]
-    public let beacons: [Beacon]?
-    public let nfc: [NFC]?
-    public let appLaunchURL: String?
-    public let associatedStoreIdentifiers: [Int]?
-    public let authenticationToken: String?
-    public let expirationDate: String?
-    public let groupingIdentifier: String?
-    public let sharingProhibited: Bool?
-    public let suppressStripShine: Bool?
-    public let userInfo: [String: String]?
-    public let voided: Bool?
-    public let webServiceURL: String?
-    public let coupon: PassContent?
-    public let boardingPass: PassContentTransit?
-    public let storeCard: PassContent?
-    public let eventTicket: PassContent?
-    public let generic: PassContent?
+    public var formatVersion: Int
+    public var passTypeIdentifier: String
+    public var serialNumber: String
+    public var teamIdentifier: String
+    public var organizationName: String
+    public var description: String
+    public var logoText: String?
+    public var foregroundColor: String?
+    public var backgroundColor: String?
+    public var labelColor: String?
+    public var relevantDate: String?
+    public var locations: [Location]?
+    public var maxDistance: Int?
+    public var barcodes: [Barcode]
+    public var beacons: [Beacon]?
+    public var nfc: [NFC]?
+    public var appLaunchURL: String?
+    public var associatedStoreIdentifiers: [Int]?
+    public var authenticationToken: String?
+    public var expirationDate: String?
+    public var groupingIdentifier: String?
+    public var sharingProhibited: Bool
+    public var suppressStripShine: Bool
+    public var userInfo: [String: String]?
+    public var voided: Bool
+    public var webServiceURL: String?
+    public var coupon: PassContent?
+    public var boardingPass: PassContentTransit?
+    public var storeCard: PassContent?
+    public var eventTicket: PassContent?
+    public var generic: PassContent?
     
     public init(
         formatVersion: Int,
@@ -57,10 +57,10 @@ public struct Pass: Codable, Equatable {
         authenticationToken: String? = nil,
         expirationDate: String? = nil,
         groupingIdentifier: String? = nil,
-        sharingProhibited: Bool? = nil,
-        suppressStripShine: Bool? = nil,
+        sharingProhibited: Bool = false,
+        suppressStripShine: Bool = false,
         userInfo: [String: String]? = nil,
-        voided: Bool? = nil,
+        voided: Bool = false,
         webServiceURL: String? = nil,
         coupon: PassContent? = nil,
         boardingPass: PassContentTransit? = nil,

@@ -2,12 +2,12 @@ import Foundation
 
 public extension Pass {
     /// Show a pass when an iBeacon is nearby
-    /// [Documentation](https://developer.apple.com/documentation/walletpasses/pass/beacons)
+    /// [Documentation](https://developer.apple.com/documentation/walvarpasses/pass/beacons)
     struct Beacon: Codable, Equatable {
-        public let proximityUUID: String
-        public let major: UInt16?
-        public let minor: UInt16?
-        public let relevantText: String?
+        public var proximityUUID: String
+        public var major: UInt16?
+        public var minor: UInt16?
+        public var relevantText: String?
         
         public init(
             proximityUUID: String,

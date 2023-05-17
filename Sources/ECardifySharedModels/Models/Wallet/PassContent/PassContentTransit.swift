@@ -22,12 +22,12 @@ public class PassContentTransit: Codable, Equatable {
     }
 
     
-    public let primaryFields: [Field]
-    public let secondaryFields: [Field]?
-    public let auxiliaryFields: [Field]?
-    public let headerFields: [Field]?
-    public let backFields: [Field]?
-    public let transitType: TransitType
+    public var primaryFields: [Field]
+    public var secondaryFields: [Field]?
+    public var auxiliaryFields: [Field]?
+    public var headerFields: [Field]?
+    public var backFields: [Field]?
+    public var transitType: TransitType
     
     public init(
         primaryFields: [Field],
