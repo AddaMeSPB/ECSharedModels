@@ -12,7 +12,7 @@ import Foundation
 /// ```
 /// .init(key: "Date2", label: "Destination", value: "2021-05-18T17:00Z", dateStyle: .short, timeStyle: .short)
 /// ```
-public class PassContentTransit: Codable, Equatable {
+public struct PassContentTransit: Codable, Equatable {
     public enum TransitType: String, Codable {
         case air = "PKTransitTypeAir"
         case train = "PKTransitTypeTrain"
@@ -22,35 +22,19 @@ public class PassContentTransit: Codable, Equatable {
     }
 
     
-    public var primaryFields: [Field]
-    public var secondaryFields: [Field]?
-    public var auxiliaryFields: [Field]?
-    public var headerFields: [Field]?
-    public var backFields: [Field]?
+    public var passContent: PassContent
     public var transitType: TransitType
     
     public init(
-        primaryFields: [Field],
-        transitType: TransitType,
-        secondaryFields: [Field]? = nil,
-        auxiliaryFields: [Field]? = nil,
-        headerFields: [Field]? = nil,
-        backFields: [Field]? = nil
+        passContent: PassContent,
+        transitType: TransitType
     ) {
-        self.primaryFields = primaryFields
-        self.secondaryFields = secondaryFields
-        self.auxiliaryFields = auxiliaryFields
-        self.headerFields = headerFields
-        self.backFields = backFields
+        self.passContent = passContent
         self.transitType = transitType
     }
 
     public static func == (lhs: PassContentTransit, rhs: PassContentTransit) -> Bool {
-        return lhs.primaryFields == rhs.primaryFields &&
-            lhs.secondaryFields == rhs.secondaryFields &&
-            lhs.auxiliaryFields == rhs.auxiliaryFields &&
-            lhs.headerFields == rhs.headerFields &&
-            lhs.backFields == rhs.backFields &&
+        return lhs.passContent == rhs.passContent &&
             lhs.transitType == rhs.transitType
     }
 }

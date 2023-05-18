@@ -1,23 +1,23 @@
 import Foundation
 
-public class PassContent: Codable, Equatable {
+public struct PassContent: Codable, Equatable {
+    public var headerFields: [Field]?
     public var primaryFields: [Field]
     public var secondaryFields: [Field]?
     public var auxiliaryFields: [Field]?
-    public var headerFields: [Field]?
     public var backFields: [Field]?
 
     public init(
+        headerFields: [Field]? = nil,
         primaryFields: [Field],
         secondaryFields: [Field]? = nil,
         auxiliaryFields: [Field]? = nil,
-        headerFields: [Field]? = nil,
         backFields: [Field]? = nil
     ) {
+        self.headerFields = headerFields
         self.primaryFields = primaryFields
         self.secondaryFields = secondaryFields
         self.auxiliaryFields = auxiliaryFields
-        self.headerFields = headerFields
         self.backFields = backFields
     }
 
@@ -28,9 +28,17 @@ public class PassContent: Codable, Equatable {
             lhs.headerFields == rhs.headerFields &&
             lhs.backFields == rhs.backFields
     }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(headerFields)
+        hasher.combine(primaryFields)
+        hasher.combine(secondaryFields)
+        hasher.combine(auxiliaryFields)
+        hasher.combine(backFields)
+    }
 }
 
-public struct Field: Codable, Equatable {
+public struct Field: Codable, Equatable, Hashable {
     public var key: String
     public var label: String?
     public var value: String
@@ -71,9 +79,20 @@ public struct Field: Codable, Equatable {
             lhs.row == rhs.row &&
             lhs.attributedValue == rhs.attributedValue
     }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(key)
+        hasher.combine(label)
+        hasher.combine(value)
+        hasher.combine(dateStyle)
+        hasher.combine(timeStyle)
+        hasher.combine(textAlignment)
+        hasher.combine(row)
+        hasher.combine(attributedValue)
+    }
 }
 
-public enum DateTimeStyle: String, Codable, Equatable {
+public enum DateTimeStyle: String, Codable, Equatable, Hashable {
     case none = "PKDateStyleNone"
     case short = "PKDateStyleShort"
     case medium = "PKDateStyleMedium"
@@ -83,9 +102,13 @@ public enum DateTimeStyle: String, Codable, Equatable {
     public static func ==(lhs: DateTimeStyle, rhs: DateTimeStyle) -> Bool {
         return lhs.rawValue == rhs.rawValue
     }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(rawValue)
+    }
 }
 
-public enum TextAlignment: String, Codable, Equatable {
+public enum TextAlignment: String, Codable, Equatable, Hashable {
     case left = "PKTextAlignmentLeft"
     case center = "PKTextAlignmentCenter"
     case right = "PKTextAlignmentRight"
@@ -93,5 +116,9 @@ public enum TextAlignment: String, Codable, Equatable {
 
     public static func ==(lhs: TextAlignment, rhs: TextAlignment) -> Bool {
         return lhs.rawValue == rhs.rawValue
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(rawValue)
     }
 }

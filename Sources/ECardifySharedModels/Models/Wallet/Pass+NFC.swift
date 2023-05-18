@@ -5,12 +5,12 @@ public extension Pass {
     struct NFC: Codable, Equatable {
         public var encryptionPublicKey: String
         public var message: String
-        public var requiresAuthentication: Bool?
+        public var requiresAuthentication: Bool
 
         public init(
             encryptionPublicKey: String,
             message: String,
-            requiresAuthentication: Bool? = nil
+            requiresAuthentication: Bool = false
         ) {
             self.encryptionPublicKey = encryptionPublicKey
             self.message = message
