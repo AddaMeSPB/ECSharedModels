@@ -1,4 +1,4 @@
-
+import Foundation
 import URLRouting
 
 public enum DevicesRoute: Equatable {

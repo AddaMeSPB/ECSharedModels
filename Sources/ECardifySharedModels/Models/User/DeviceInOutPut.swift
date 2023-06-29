@@ -7,32 +7,32 @@ public struct DeviceModel: Codable {
 
     public init(
         _id: ObjectId,
+        ownerId: ObjectId?,
         identifierForVendor: String? = nil,
         name: String,
         model: String? = nil,
         osVersion: String? = nil,
         pushToken: String,
-        voipToken: String,
-        ownerId: ObjectId?
+        voipToken: String
     ) {
         self._id = _id
+        self.ownerId = ownerId
         self.identifierForVendor = identifierForVendor
         self.name = name
         self.model = model
         self.osVersion = osVersion
         self.pushToken = pushToken
         self.voipToken = voipToken
-        self.ownerId = ownerId
     }
 
     public var _id: ObjectId
+    public var ownerId: ObjectId?
     public var identifierForVendor: String?
     public var name: String
     public var model: String?
     public var osVersion: String?
     public var pushToken: String
     public var voipToken: String
-    public var ownerId: ObjectId?
 
     public var createdAt: Date?
     public var updatedAt: Date?

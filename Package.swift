@@ -17,7 +17,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-url-routing.git", from: "0.5.0"),
-        .package(url: "https://github.com/orlandos-nl/BSON.git", from: "8.0.9")
+        .package(url: "https://github.com/orlandos-nl/BSON.git", from: "8.0.10")
     ],
     targets: [
         .target(

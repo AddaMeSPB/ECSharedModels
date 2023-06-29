@@ -1,6 +1,17 @@
 import Foundation
 
-public struct PassContent: Codable, Equatable {
+public enum FieldTypes: Codable, Equatable {
+    case header
+    case primary
+    case secondary
+    case auxiliary
+    case back
+}
+
+public struct PassContent: Codable, Equatable, Identifiable {
+    public var id: String {
+        UUID().uuidString
+    }
     public var headerFields: [Field]?
     public var primaryFields: [Field]
     public var secondaryFields: [Field]?
@@ -39,8 +50,8 @@ public struct PassContent: Codable, Equatable {
 }
 
 public struct Field: Codable, Equatable, Hashable {
-    public var key: String
     public var label: String?
+    public var key: String
     public var value: String
     public var dateStyle: DateTimeStyle?
     public var timeStyle: DateTimeStyle?
@@ -50,9 +61,9 @@ public struct Field: Codable, Equatable, Hashable {
     public var attributedValue: String?
 
     public init(
+        label: String? = nil,
         key: String,
-        label: String?,
-        value: String,
+        value: String = "",
         dateStyle: DateTimeStyle? = nil,
         timeStyle: DateTimeStyle? = nil,
         textAlignment: TextAlignment? = nil,
