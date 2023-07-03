@@ -1,15 +1,23 @@
 
 import URLRouting
+import BSON
 
 public enum WalletPassRoute: Equatable {
+    case list
     case create(input: WalletPass)
 }
 
 public struct WalletPassRouter: ParserPrinter {
     public var body: some Router<WalletPassRoute> {
-        Route(.case(WalletPassRoute.create)) {
-            Method.post
-            Body(.json(WalletPass.self))
+        OneOf {
+            Route(.case(WalletPassRoute.list)) {
+                Path { "list" }
+            }
+            
+            Route(.case(WalletPassRoute.create)) {
+                Method.post
+                Body(.json(WalletPass.self))
+            }
         }
     }
 }
