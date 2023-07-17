@@ -60,3 +60,9 @@ extension AttachmentInOutPut: Equatable {
 }
 
 extension AttachmentInOutPut: Hashable {}
+
+extension AttachmentInOutPut {
+    public static var logo: Self = .init(type: .image, imageUrlString: "https://learnplaygrow.ams3.digitaloceanspaces.com/uploads/images/9155F894-E500-453A-A691-6CDE8F722BDF/CECF3925-180E-4373-A15E-E7876760D18F/logo.png")
+
+    public static var thumbnail: Self = .init(type: .image, imageUrlString: "https://learnplaygrow.ams3.digitaloceanspaces.com/uploads/images/DC6E2827-FF38-4038-A3BB-6F2C40695EC5/CECF3925-180E-4373-A15E-E7876760D18F/thumbnail.png")
+}

@@ -9,6 +9,61 @@ public enum FieldTypes: Codable, Equatable {
 }
 
 public struct PassContent: Codable, Equatable, Identifiable {
+
+    public struct Field: Codable, Equatable, Hashable {
+        public var label: String?
+        public var key: String
+        public var value: String
+        public var dateStyle: DateTimeStyle?
+        public var timeStyle: DateTimeStyle?
+        public var textAlignment: TextAlignment?
+        /// only works for Auxiliary Fields
+        public var row: Int?
+        public var attributedValue: String?
+
+        public init(
+            label: String? = nil,
+            key: String,
+            value: String = "",
+            dateStyle: DateTimeStyle? = nil,
+            timeStyle: DateTimeStyle? = nil,
+            textAlignment: TextAlignment? = nil,
+            row: Int? = nil,
+            attributedValue: String? = nil
+        ) {
+            self.key = key
+            self.label = label
+            self.value = value
+            self.dateStyle = dateStyle
+            self.timeStyle = timeStyle
+            self.textAlignment = textAlignment
+            self.row = row
+            self.attributedValue = attributedValue
+        }
+
+        public static func == (lhs: Field, rhs: Field) -> Bool {
+            return lhs.key == rhs.key &&
+                lhs.label == rhs.label &&
+                lhs.value == rhs.value &&
+                lhs.dateStyle == rhs.dateStyle &&
+                lhs.timeStyle == rhs.timeStyle &&
+                lhs.textAlignment == rhs.textAlignment &&
+                lhs.row == rhs.row &&
+                lhs.attributedValue == rhs.attributedValue
+        }
+
+        public func hash(into hasher: inout Hasher) {
+            hasher.combine(key)
+            hasher.combine(label)
+            hasher.combine(value)
+            hasher.combine(dateStyle)
+            hasher.combine(timeStyle)
+            hasher.combine(textAlignment)
+            hasher.combine(row)
+            hasher.combine(attributedValue)
+        }
+    }
+
     public var id: String {
         UUID().uuidString
     }
@@ -46,60 +101,6 @@ public struct PassContent: Codable, Equatable, Identifiable {
         hasher.combine(secondaryFields)
         hasher.combine(auxiliaryFields)
         hasher.combine(backFields)
-    }
-}
-
-public struct Field: Codable, Equatable, Hashable {
-    public var label: String?
-    public var key: String
-    public var value: String
-    public var dateStyle: DateTimeStyle?
-    public var timeStyle: DateTimeStyle?
-    public var textAlignment: TextAlignment?
-    /// only works for Auxiliary Fields
-    public var row: Int?
-    public var attributedValue: String?
-
-    public init(
-        label: String? = nil,
-        key: String,
-        value: String = "",
-        dateStyle: DateTimeStyle? = nil,
-        timeStyle: DateTimeStyle? = nil,
-        textAlignment: TextAlignment? = nil,
-        row: Int? = nil,
-        attributedValue: String? = nil
-    ) {
-        self.key = key
-        self.label = label
-        self.value = value
-        self.dateStyle = dateStyle
-        self.timeStyle = timeStyle
-        self.textAlignment = textAlignment
-        self.row = row
-        self.attributedValue = attributedValue
-    }
-
-    public static func == (lhs: Field, rhs: Field) -> Bool {
-        return lhs.key == rhs.key &&
-            lhs.label == rhs.label &&
-            lhs.value == rhs.value &&
-            lhs.dateStyle == rhs.dateStyle &&
-            lhs.timeStyle == rhs.timeStyle &&
-            lhs.textAlignment == rhs.textAlignment &&
-            lhs.row == rhs.row &&
-            lhs.attributedValue == rhs.attributedValue
-    }
-
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(key)
-        hasher.combine(label)
-        hasher.combine(value)
-        hasher.combine(dateStyle)
-        hasher.combine(timeStyle)
-        hasher.combine(textAlignment)
-        hasher.combine(row)
-        hasher.combine(attributedValue)
     }
 }
 

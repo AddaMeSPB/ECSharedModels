@@ -1,95 +1,6 @@
 import Foundation
 import BSON
 
-public struct WalletPass: Codable, Equatable, Identifiable {
-
-    static public var collectionName = "wallet_passes"
-
-    public var _id: ObjectId
-    public var id: String {
-        get {
-            return self._id.hexString
-        }
-        set { newValue } // its does nothing also no side effect
-    }
-    public let ownerId: ObjectId
-    public let pass: Pass
-    public let imageURLs: [ImageURL]
-    public var isPaid: Bool = false
-    public var isDataSavedOnServer: Bool = false
-    public var createdAt: Date?
-    public var updatedAt: Date?
-
-    public init(
-        _id: ObjectId,
-        ownerId: ObjectId,
-        pass: Pass,
-        imageURLs: [ImageURL],
-        isPaid: Bool = false,
-        isDataSavedOnServer: Bool = false,
-        createdAt: Date? = nil,
-        updatedAt: Date? = nil
-    ) {
-        self._id = _id
-        self.ownerId = ownerId
-        self.pass = pass
-        self.imageURLs = imageURLs
-        self.isPaid = isPaid
-        self.isDataSavedOnServer = isDataSavedOnServer
-        self.createdAt = createdAt
-        self.updatedAt = updatedAt
-    }
-
-    public enum CodingKeys: String, CodingKey {
-        case _id
-        case ownerId
-        case pass
-        case imageURLs
-        case isPaid
-        case isDataSavedOnServer
-        case createdAt
-        case updatedAt
-    }
-}
-
-//extension WalletPass: Hashable {
-//    public func hash(into hasher: inout Hasher) {
-//            hasher.combine(_id)
-//            hasher.combine(ownerId)
-//            hasher.combine(pass)
-//            hasher.combine(imageURLs)
-//            hasher.combine(isPaid)
-//            hasher.combine(createdAt)
-//            hasher.combine(updatedAt)
-//        }
-//
-//        public static func ==(lhs: WalletPass, rhs: WalletPass) -> Bool {
-//            return lhs._id == rhs._id &&
-//                lhs.ownerId == rhs.ownerId &&
-//                lhs.pass == rhs.pass &&
-//                lhs.imageURLs == rhs.imageURLs &&
-//                lhs.isPaid == rhs.isPaid &&
-//                lhs.createdAt == rhs.createdAt &&
-//                lhs.updatedAt == rhs.updatedAt
-//        }
-//}
-
-extension  WalletPass {
-    public static var mock: WalletPass = .init(
-        _id: .init(),
-        ownerId: .init(),
-        pass: .mock,
-        imageURLs: ImageURL.draff
-    )
-
-    public static var mock1: WalletPass = .init(
-        _id: .init(),
-        ownerId: .init(),
-        pass: .mock1,
-        imageURLs: ImageURL.draff
-    )
-}
-
 /// I.e. passContents of the pass.json file
 /// For all available fields and their documentation, see [this page](https://developer.apple.com/documentation/walletrpasses/pass)
 public struct Pass: Codable, Equatable {
@@ -197,9 +108,9 @@ public struct Pass: Codable, Equatable {
 extension Pass {
     public static var mock: Pass = .init(
         formatVersion: 1,
-        passTypeIdentifier: "pass.ecardify.addame.com",
+        passTypeIdentifier: "",
         serialNumber: UUID().uuidString,
-        teamIdentifier: "6989658CU5",
+        teamIdentifier: "",
         organizationName: "Addame",
         description: "IT Consultant",
         logoText: "Alif",
@@ -208,13 +119,13 @@ extension Pass {
         labelColor: .rgb(r: 147, g: 108, b: 137),
         generic: .init(
             primaryFields: [
-                .init(label: "NAME", key: "member", value: "SAROAR \nKKHANDOKER")
+                .init(label: "NAME", key: "member", value: "SAROAR \nDemo")
             ],
             secondaryFields: [
                 .init(label: "POSITION", key: "position", value: "IOS Developer")
             ],
             auxiliaryFields: [
-                .init(label: "PHONE", key: "mobile", value: "+351911700782"),
+                .init(label: "PHONE", key: "mobile", value: "+351000000000"),
                 .init(label: "EMAIL", key: "email", value: "saroar9@gmail.com")
 
             ],
@@ -226,9 +137,9 @@ extension Pass {
 
     public static var mock1: Pass = .init(
         formatVersion: 1,
-        passTypeIdentifier: "pass.ecardify.addame.com",
+        passTypeIdentifier: "",
         serialNumber: UUID().uuidString,
-        teamIdentifier: "6989658CU5",
+        teamIdentifier: "",
         organizationName: "Yandexxx",
         description: "IT Consultant",
         logoText: "Alif",
@@ -237,13 +148,13 @@ extension Pass {
         labelColor: .rgb(r: 147, g: 108, b: 137),
         generic: .init(
             primaryFields: [
-                .init(label: "NAME", key: "member", value: "SAROAR \nKKHANDOKER")
+                .init(label: "NAME", key: "member", value: "SAROAR \nDemo")
             ],
             secondaryFields: [
                 .init(label: "POSITION", key: "position", value: "IOS Developer")
             ],
             auxiliaryFields: [
-                .init(label: "PHONE", key: "mobile", value: "+351911700782"),
+                .init(label: "PHONE", key: "mobile", value: "+351000000000"),
                 .init(label: "EMAIL", key: "email", value: "saroar9@gmail.com")
 
             ],
@@ -255,9 +166,9 @@ extension Pass {
 
     public static var draff: Pass = .init(
         formatVersion: 1,
-        passTypeIdentifier: "pass.ecardify.addame.com",
+        passTypeIdentifier: "",
         serialNumber: UUID().uuidString,
-        teamIdentifier: "6989658CU5",
+        teamIdentifier: "",
         organizationName: "",
         description: "",
         logoText: "",
