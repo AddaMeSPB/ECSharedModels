@@ -1,6 +1,5 @@
 
 import Foundation
-import Contacts
 
 // MARK: - VCardProperty
 public enum VCardProperty: String, Codable {
