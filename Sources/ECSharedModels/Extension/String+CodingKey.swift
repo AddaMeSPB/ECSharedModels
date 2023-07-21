@@ -5,7 +5,7 @@ extension String: CodingKey {
     public var stringValue: String {
         return self
     }
-    
+
     public var intValue: Int? {
         return Int(self)
     }
@@ -18,3 +18,4 @@ extension String: CodingKey {
         self.init(stringValue)
     }
 }
+
