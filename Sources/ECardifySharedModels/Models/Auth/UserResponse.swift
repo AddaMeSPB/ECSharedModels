@@ -1,5 +1,4 @@
 
-
 public struct RefreshTokenResponse: Codable {
     public var accessToken: String
     public var refreshToken: String
