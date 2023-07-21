@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "ECardifySharedModels",
+    name: "ECSharedModels",
     platforms: [
        .iOS(.v16),
        .macOS(.v12)
@@ -12,8 +12,8 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "ECardifySharedModels",
-            targets: ["ECardifySharedModels"]),
+            name: "ECSharedModels",
+            targets: ["ECSharedModels"]),
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-url-routing.git", from: "0.5.0"),
@@ -21,14 +21,14 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "ECardifySharedModels",
+            name: "ECSharedModels",
             dependencies: [
                 .product(name: "URLRouting", package: "swift-url-routing"),
                 .product(name: "BSON", package: "BSON")
             ]
         ),
         .testTarget(
-            name: "ECardifySharedModelsTests",
-            dependencies: ["ECardifySharedModels"]),
+            name: "ECSharedModelsTests",
+            dependencies: ["ECSharedModels"]),
     ]
 )

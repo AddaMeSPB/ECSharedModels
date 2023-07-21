@@ -10,8 +10,8 @@ public enum UserRoute: Equatable {
 
 }
 
-struct UserRouter: ParserPrinter {
-    var body: some Router<UserRoute> {
+public struct UserRouter: ParserPrinter {
+    public var body: some Router<UserRoute> {
         OneOf {
             Route(.case(UserRoute.find))
 

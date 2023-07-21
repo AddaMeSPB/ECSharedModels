@@ -8,8 +8,8 @@ public enum AttachmentsRoute: Equatable {
     case attachment(id: String, AttachmentRoute)
 }
 
-struct AttachmentsRouter: ParserPrinter {
-    var body: some Router<AttachmentsRoute> {
+public struct AttachmentsRouter: ParserPrinter {
+    public var body: some Router<AttachmentsRoute> {
         OneOf {
             Route(.case(AttachmentsRoute.create)) {
                 Method.post
