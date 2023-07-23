@@ -4,11 +4,14 @@ import BSON
 // MARK:- OTP via Email
 public struct EmailLoginInput: Codable, Equatable {
     public init(
+        name: String,
         email: String
     ) {
+        self.name = name
         self.email = email
     }
 
+    public var name: String
     public var email: String
 }
 
