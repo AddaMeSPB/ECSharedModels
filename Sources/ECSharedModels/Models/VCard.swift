@@ -101,7 +101,7 @@ public struct VCard: Codable, Equatable, Identifiable {
         public var type: AType
 
         /// postOfficeAddress: Post Office Address
-        public var postOfficeAddress: String
+        public var postOfficeAddress: String?
 
         /// ExtendedAddress: Extended Address
         public var extendedAddress: String?
@@ -134,7 +134,7 @@ public struct VCard: Codable, Equatable, Identifiable {
         public init(
             id: UUID = .init(),
             type: AType,
-            postOfficeAddress: String,
+            postOfficeAddress: String?,
             extendedAddress: String?,
             street: String,
             locality: String,
@@ -154,7 +154,7 @@ public struct VCard: Codable, Equatable, Identifiable {
         }
 
         public var vcardRepresentation: String {
-            return "ADR;TYPE=\(self.type):\(self.postOfficeAddress);\(self.extendedAddress ?? "");\(self.street);\(self.locality);\(self.region ?? "");\(self.postalCode);\(self.country)\n"
+            return "ADR;TYPE=\(self.type):\(self.postOfficeAddress ?? "");\(self.extendedAddress ?? "");\(self.street);\(self.locality);\(self.region ?? "");\(self.postalCode);\(self.country)\n"
         }
 
         public var fullAddress: String {
@@ -162,15 +162,13 @@ public struct VCard: Codable, Equatable, Identifiable {
         }
 
         public var isFormValid: Bool {
-            !self.postOfficeAddress.isEmpty
-            && !self.street.isEmpty
+            !self.street.isEmpty
             && !self.locality.isEmpty
-            && !(self.region?.isEmpty ?? false)
             && !self.postalCode.isEmpty
             && !self.country.isEmpty
         }
 
-        public static var work: Self = .init(type: .work, postOfficeAddress: "", extendedAddress: nil, street: "", locality: "", region: "", postalCode: "", country: "")
+        public static var empty: Self = .init(type: .work, postOfficeAddress: nil, extendedAddress: nil, street: "", locality: "", region: "", postalCode: "", country: "")
 
         public static var usa: Self = .init(type: .work, postOfficeAddress: "151 Moore Avenue", extendedAddress: nil, street: "151 Moore Avenue", locality: "Grand Rapids", region: "MI", postalCode: "49503", country: "United States of America")
     }
@@ -460,11 +458,11 @@ extension VCard {
 
     public static var empty: Self = .init(
         contact: emptyContact,
-        formattedName: "Alif",
+        formattedName: "",
         organization: nil,
-        position: "CEO & IOS Developer",
+        position: "",
         imageURLs: [],
-        addresses: [Address.work],
+        addresses: [Address.empty],
         telephones:  [Telephone.empty],
         emails:  [Email.empty],
         urls: [URL(string: "https://addame.com") ?? URL(string: "https://www.apple.com")!],
