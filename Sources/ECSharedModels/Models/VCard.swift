@@ -476,7 +476,7 @@ extension VCard {
         formattedName: "Alif",
         organization: "IT Company Adda.",
         position: "CEO & IOS Developer",
-        imageURLs: ImageURL.draff,
+        imageURLs: ImageURL.draft,
         addresses: [Address.usa],
         telephones:  [Telephone.demo],
         emails:  [Email.demo],
@@ -485,4 +485,12 @@ extension VCard {
         website: "https://addame.com",
         socialMedia: .telegram
     )
+}
+
+extension Array where Element: Equatable {
+    mutating func addUnique(_ element: Element) {
+        if !self.contains(element) {
+            self.append(element)
+        }
+    }
 }

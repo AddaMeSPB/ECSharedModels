@@ -198,7 +198,7 @@ public enum AssetType: String, Codable, Equatable {
     case icon, logo, thumbnail
 }
 
-public struct ImageURL: Codable, Equatable {
+public struct ImageURL: Codable, Equatable, Hashable {
     public let type: AssetType
     public let urlString: String
 
@@ -209,7 +209,7 @@ public struct ImageURL: Codable, Equatable {
 }
 
 extension ImageURL {
-    static public var draff: [ImageURL] = [
+    static public var draft: [ImageURL] = [
         .init(type: .icon, urlString: "https://learnplaygrow.ams3.digitaloceanspaces.com/uploads/images/9155F894-E500-453A-A691-6CDE8F722BDF/CECF3925-180E-4373-A15E-E7876760D18F/logo.png"),
         .init(type: .logo, urlString: "https://learnplaygrow.ams3.digitaloceanspaces.com/uploads/images/9155F894-E500-453A-A691-6CDE8F722BDF/CECF3925-180E-4373-A15E-E7876760D18F/logo.png"),
         .init(type: .thumbnail, urlString: "https://learnplaygrow.ams3.digitaloceanspaces.com/uploads/images/DC6E2827-FF38-4038-A3BB-6F2C40695EC5/CECF3925-180E-4373-A15E-E7876760D18F/thumbnail.png")
