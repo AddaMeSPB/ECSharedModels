@@ -6,11 +6,10 @@ public struct WalletPass: Codable, Equatable, Identifiable {
     static public var collectionName = "wallet_passes"
 
     public var _id: ObjectId
+
+    /// String representation of the ObjectId for Identifiable conformance
     public var id: String {
-        get {
-            return self._id.hexString
-        }
-        set { newValue } // its does nothing also no side effect
+        _id.hexString
     }
     public let ownerId: ObjectId
     public var vCard: VCard

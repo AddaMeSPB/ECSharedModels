@@ -380,10 +380,9 @@ public struct VCard: Codable, Equatable, Identifiable {
 
         }
 
-        if imageURLs.count > 2 {
+        if !imageURLs.isEmpty {
             for image in imageURLs {
                 result += "\(image.type.rawValue.uppercased());MEDIATYPE=image/png:\(image.urlString)\r\n"
-                // LOGO;MEDIATYPE=image/png:http://example.com/logo.png
             }
         }
 

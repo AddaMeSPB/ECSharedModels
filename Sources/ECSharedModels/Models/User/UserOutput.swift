@@ -94,16 +94,26 @@ extension UserOutput: Equatable, Hashable {
 }
 
 extension UserOutput {
-    public var lastAvatarURLString: String {
-        if !(attachments?.isEmpty ?? false) {
-            return attachments!.filter { $0.type == .image }.last!.imageUrlString ?? "https://empty.com"
+    private static let placeholderURLString = "https://placeholder.ecardify.com/user.png"
+
+    /// Returns the last avatar URL string, or nil if no image attachments exist
+    public var lastAvatarURLString: String? {
+        guard let attachments = attachments, !attachments.isEmpty else {
+            return nil
         }
 
-        print(#line, #file, "empty string")
-        return "https://empty.com"
+        let imageAttachments = attachments.filter { $0.type == .image }
+        return imageAttachments.last?.imageUrlString
     }
 
-    public var imageURL: URL {
-        return URL(string: lastAvatarURLString)!
+    /// Returns the image URL, or nil if not available
+    public var imageURL: URL? {
+        guard let urlString = lastAvatarURLString else { return nil }
+        return URL(string: urlString)
+    }
+
+    /// Returns the image URL or a default placeholder - use when a non-optional URL is required
+    public var imageURLOrPlaceholder: URL {
+        imageURL ?? URL(string: Self.placeholderURLString)!
     }
 }
