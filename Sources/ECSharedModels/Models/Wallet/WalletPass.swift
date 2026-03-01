@@ -11,7 +11,7 @@ public struct WalletPass: Codable, Equatable, Identifiable {
     public var id: String {
         _id.hexString
     }
-    public let ownerId: ObjectId
+    public var ownerId: ObjectId
     public var vCard: VCard
     public var colorPalette: ColorPalette
     public var isPaid: Bool = false

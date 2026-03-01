@@ -8,6 +8,7 @@ public struct UserModel: Codable, Hashable {
 
     public init(
         _id: ObjectId,
+        neuauthSub: String? = nil,
         fullName: String,
         language: UserLanguage,
         role: UserRole = .basic,
@@ -16,6 +17,7 @@ public struct UserModel: Codable, Hashable {
         email: String? = nil
     ) {
         self._id = _id
+        self.neuauthSub = neuauthSub
         self.fullName = fullName
         self.language = language
         self.role = role
@@ -25,6 +27,7 @@ public struct UserModel: Codable, Hashable {
     }
 
     public var _id: ObjectId
+    public var neuauthSub: String?
     public var fullName: String?
     public var language: UserLanguage
     public var role: UserRole
