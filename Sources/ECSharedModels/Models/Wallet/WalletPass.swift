@@ -16,6 +16,7 @@ public struct WalletPass: Codable, Equatable, Identifiable {
     public var colorPalette: ColorPalette
     public var isPaid: Bool = false
     public var isDataSavedOnServer: Bool = false
+    public var publicSlug: String?
     public var createdAt: Date?
     public var updatedAt: Date?
 
@@ -26,6 +27,7 @@ public struct WalletPass: Codable, Equatable, Identifiable {
         colorPalette: ColorPalette = .default,
         isPaid: Bool = false,
         isDataSavedOnServer: Bool = false,
+        publicSlug: String? = nil,
         createdAt: Date? = nil,
         updatedAt: Date? = nil
     ) {
@@ -35,6 +37,7 @@ public struct WalletPass: Codable, Equatable, Identifiable {
         self.colorPalette = colorPalette
         self.isPaid = isPaid
         self.isDataSavedOnServer = isDataSavedOnServer
+        self.publicSlug = publicSlug
         self.createdAt = createdAt
         self.updatedAt = updatedAt
     }
@@ -46,12 +49,13 @@ public struct WalletPass: Codable, Equatable, Identifiable {
         case colorPalette
         case isPaid
         case isDataSavedOnServer
+        case publicSlug
         case createdAt
         case updatedAt
     }
 }
 
-extension  WalletPass {
+extension WalletPass {
     public static var mock: WalletPass = .init(
         _id: .init(),
         ownerId: .init(),
