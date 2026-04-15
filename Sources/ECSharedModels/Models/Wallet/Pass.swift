@@ -196,6 +196,9 @@ extension Pass {
 
 public enum AssetType: String, Codable, Equatable {
     case icon, logo, thumbnail
+    /// High-resolution variant (~800×800) intended for web display/hero.
+    /// Not part of the Apple Wallet pkpass spec — client-only addition.
+    case avatar
 }
 
 public struct ImageURL: Codable, Equatable, Hashable {
