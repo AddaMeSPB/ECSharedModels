@@ -455,20 +455,25 @@ extension VCard {
     public static var emptyContact: VCard.Contact = .init(lastName: "", firstName: "")
     public static var mockContact: VCard.Contact = .init(lastName: "Dan", firstName: "Stephan")
 
-    public static var empty: Self = .init(
-        contact: emptyContact,
-        formattedName: "",
-        organization: nil,
-        position: "",
-        imageURLs: [],
-        addresses: [Address.empty],
-        telephones:  [Telephone.empty],
-        emails:  [Email.empty],
-        urls: [URL(string: "https://addame.com") ?? URL(string: "https://www.apple.com")!],
-        notes: [""],
-        website: "https://addame.com",
-        socialMedia: .telegram
-    )
+    // Computed (not stored) so every new draft card gets a fresh `id`.
+    // A stored static shares one UUID across all cards built from `.empty`,
+    // which lets distinct people collide on the same `vCard.id`.
+    public static var empty: Self {
+        .init(
+            contact: emptyContact,
+            formattedName: "",
+            organization: nil,
+            position: "",
+            imageURLs: [],
+            addresses: [Address.empty],
+            telephones:  [Telephone.empty],
+            emails:  [Email.empty],
+            urls: [URL(string: "https://addame.com") ?? URL(string: "https://www.apple.com")!],
+            notes: [""],
+            website: "https://addame.com",
+            socialMedia: .telegram
+        )
+    }
 
     public static var demo: Self = .init(
         contact: emptyContact,
