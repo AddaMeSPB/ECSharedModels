@@ -229,3 +229,12 @@ public struct WalletPassResponse: Codable {
 }
 
 extension WalletPassResponse: Equatable {}
+
+/// Response for `DELETE /v1/wallet_pass/{id}` — echoes the deleted pass id.
+public struct WalletPassDeleteResponse: Codable, Equatable {
+    public let id: String
+
+    public init(id: String) {
+        self.id = id
+    }
+}

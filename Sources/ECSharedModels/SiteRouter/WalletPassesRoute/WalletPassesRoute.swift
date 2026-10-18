@@ -5,6 +5,7 @@ import BSON
 public enum WalletPassRoute: Equatable {
     case list
     case create(input: WalletPass)
+    case delete(id: ObjectId)
 }
 
 public struct WalletPassRouter: ParserPrinter {
@@ -13,10 +14,16 @@ public struct WalletPassRouter: ParserPrinter {
             Route(.case(WalletPassRoute.list)) {
                 Path { "list" }
             }
-            
+
             Route(.case(WalletPassRoute.create)) {
                 Method.post
                 Body(.json(WalletPass.self))
+            }
+
+            // DELETE /v1/wallet_pass/{id}
+            Route(.case(WalletPassRoute.delete)) {
+                Method.delete
+                Path { objectIdParser }
             }
         }
     }
